@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Views/welcomeScreen.dart';
-import 'package:roommatch/Views/logInScreen.dart';
-import 'package:roommatch/Views/signUpScreen.dart';
 
 void main() {
   runApp(const MyApp());
