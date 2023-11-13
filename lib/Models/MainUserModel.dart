@@ -3,9 +3,9 @@ import 'package:roommatch/Models/MatchedUserModel.dart';
 import 'package:roommatch/Models/Message.dart';
 import 'package:roommatch/Models/Preferences.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
-import 'package:roommatch/Models/baseUserModel.dart';
+import 'package:roommatch/Models/BaseUserModel.dart';
 
-class MainUserModel extends baseUserModel {
+class MainUserModel extends BaseUserModel {
   bool doneTutorial = false;
 
   String password;
@@ -32,4 +32,8 @@ class MainUserModel extends baseUserModel {
       List<Message> messages)
       : super(firstName, lastName, userID, collegeName, age, preferences,
             images, bio, algoScore);
+
+  String printSmtg() {
+    return 'Hello';
+  }
 }
