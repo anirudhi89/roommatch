@@ -6,6 +6,9 @@ class signUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('RoomMatch'),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -22,7 +25,6 @@ class signUpScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // TODO: Add a logo
-            // TODO: ADD BACK BUTTON
             const Text(
               'Sign Up',
               textAlign: TextAlign.center,

@@ -6,6 +6,9 @@ class logInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('RoomMatch'),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -22,7 +25,6 @@ class logInScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // TODO: Add a logo
-            // TODO: ADD BACK BUTTON
             const Text(
               'Log In',
               textAlign: TextAlign.center,
