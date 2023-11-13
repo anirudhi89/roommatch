@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roommatch/Views/swipeOnPpl.dart';
 
 class logInScreen extends StatelessWidget {
   const logInScreen({super.key});
@@ -34,20 +35,36 @@ class logInScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 48.0),
-            ElevatedButton(
-              onPressed: () {
-                // TODO
-              },
-              child: const Text('Email'),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Email',
+                ),
+              ),
             ),
-            const SizedBox(height: 16.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Password',
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                // print("Sign-Up");
-                // TODO: Implement sign-up functionality
+                print('pressed smtg');
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    // TEMP
+                    builder: (context) => const swipeOnPpl(),
+                  ),
+                );
               },
-              child: const Text('Password'),
+              child: const Text('Log In'),
             ),
           ],
         ),
