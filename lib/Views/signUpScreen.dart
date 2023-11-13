@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:roommatch/Views/logInScreen.dart';
-import 'package:roommatch/Views/signUpScreen.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class signUpScreen extends StatelessWidget {
+  const signUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +22,9 @@ class WelcomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // TODO: Add a logo
+            // TODO: ADD BACK BUTTON
             const Text(
-              'Welcome to RoomMatch',
+              'Sign Up',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 32.0,
@@ -36,24 +35,17 @@ class WelcomeScreen extends StatelessWidget {
             const SizedBox(height: 48.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const logInScreen(),
-                  ),
-                );
+                // TODO
               },
-              child: const Text('Login'),
+              child: const Text('Email'),
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const signUpScreen(),
-                  ),
-                );
+                // print("Sign-Up");
+                // TODO: Implement sign-up functionality
               },
-              child: const Text('Sign Up'),
+              child: const Text('Password'),
             ),
           ],
         ),

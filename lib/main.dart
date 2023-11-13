@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Views/welcomeScreen.dart';
+import 'package:roommatch/Views/logInScreen.dart';
+import 'package:roommatch/Views/signUpScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      // routes: {
+      //   '/welcome': (context) => const WelcomeScreen(),
+      //   '/login': (context) => const logInScreen(),
+      //   '/signup': (context) => const signUpScreen(),
+      // },
+      // ^^ Apparently Flutter doesn't like this
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -33,7 +41,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: WelcomeScreen(),
-      // bottomNavigationBar: const NavigationBar(destinations: destinations)
     );
   }
 }

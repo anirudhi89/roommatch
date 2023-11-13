@@ -1,16 +1,15 @@
-# roommatch
+# Roommatch
 
-A new Flutter project.
+Tinder meets Roommate Matching
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+In the root directory run `flutter clean` and `flutter pub get`.
+Fire up the iOS simulator, initialize a device, and in the root directory, run `flutter run`.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Contributors:
+- Anirudh Iyer
+- Erasto Omolo
+- Calvin Forinash
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
