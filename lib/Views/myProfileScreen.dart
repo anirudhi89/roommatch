@@ -39,6 +39,7 @@ class MyProfileScreen extends StatelessWidget {
 
 class ClickableImage extends StatelessWidget {
   final int num;
+  //Will keep this constructor to have alternate text for images
   const ClickableImage({
     required this.num,
   });
