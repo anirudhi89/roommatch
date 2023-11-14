@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Views/swipeOnPpl.dart';
 
-class logInScreen extends StatefulWidget {
+class logInScreen extends StatelessWidget {
   const logInScreen({super.key});
 
   @override
@@ -70,11 +70,5 @@ class logInScreen extends StatefulWidget {
         ),
       ),
     );
-  }
-  
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }
