@@ -5,6 +5,7 @@ import 'package:roommatch/Models/Preferences.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
 import 'package:roommatch/Models/BaseUserModel.dart';
 
+// TODO: SINGLETON
 class MainUserModel extends BaseUserModel {
   bool doneTutorial = false;
 

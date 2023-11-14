@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:roommatch/Views/logInScreen.dart';
 import 'package:roommatch/Views/signUpScreen.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
@@ -59,5 +59,11 @@ class WelcomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }
