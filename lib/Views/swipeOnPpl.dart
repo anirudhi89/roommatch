@@ -1,42 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 // Main page where users can swipe on one another -> swipe animation
 
 class swipeOnPpl extends StatelessWidget {
-  const swipeOnPpl({super.key});
+  const swipeOnPpl({Key? key}) : super(key: key);
+  
+
+  static List<Container> cards = [
+    Container(
+      alignment: Alignment.center,
+      color: Colors.blue,
+      child: const Text('1'),
+    ),
+    Container(
+      alignment: Alignment.center,
+      color: Colors.red,
+      child: const Text('2'),
+    ),
+    Container(
+      alignment: Alignment.center,
+      color: Colors.purple,
+      child: const Text('3'),
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('RoomMatch'),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.blueAccent,
-              Colors.blueGrey,
-            ],
-          ),
-        ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // TODO: FIX
-            Text(
-              'Next Page Placeholder',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ],
+      body: Center(
+        child: CardSwiper(
+          cardsCount: cards.length,
+          cardBuilder: (context, index, percentThresholdX, percentThresholdY) =>
+              cards[index],
         ),
       ),
     );
