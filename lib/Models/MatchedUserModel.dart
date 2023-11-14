@@ -6,31 +6,31 @@ import 'package:roommatch/Models/UnmatchedUserModel.dart';
 
 class MatchedUserModel extends BaseUserModel {
   late List<Message> messages;
-  String firstName;
-  String lastName;
-  int userID;
-  String collegeName;
-  int age;
-  Set<Preferences> preferences;
-  List<Image> images;
-  String bio;
-  double algoScore;
+  // String firstName;
+  // String lastName;
+  // int userID;
+  // String collegeName;
+  // int age;
+  // Set<Preferences> preferences;
+  // List<Image> images;
+  // String bio;
+  // double algoScore;
 
-  // MatchedUserModel(this.name, this.images, this.age, this.description);
   MatchedUserModel(
     this.messages,
-    this.firstName,
-    this.lastName,
-    this.userID,
-    this.collegeName,
-    this.age,
-    this.preferences,
-    this.images,
-    this.bio,
-    this.algoScore,
+    firstName,
+    lastName,
+    userID,
+    collegeName,
+    age,
+    preferences,
+    images,
+    bio,
+    algoScore,
   ) : super(firstName, lastName, userID, collegeName, age, preferences, images,
             bio, algoScore);
 
+  // Called by Main User's ViewModel - should also update Main User's list of mutuallymatched
   UnmatchedUserModel convertToUnmatchedUser() {
     return UnmatchedUserModel(
       firstName,

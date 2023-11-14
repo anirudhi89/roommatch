@@ -4,7 +4,6 @@ import 'package:roommatch/Models/MatchedUserModel.dart';
 import 'package:roommatch/Models/Message.dart';
 import 'package:roommatch/Models/Preferences.dart';
 
-// Called by Main User's ViewModel - should also update Main User's listOfOneWayMatches
 class UnmatchedUserModel extends BaseUserModel {
   String firstName;
   String lastName;
@@ -27,7 +26,8 @@ class UnmatchedUserModel extends BaseUserModel {
     this.algoScore,
   ) : super(firstName, lastName, userID, collegeName, age, preferences, images,
             bio, algoScore);
-
+            
+  // Called by Main User's ViewModel - should also update Main User's listOfOneWayMatches
   MatchedUserModel convertToMatchedUser() {
     List<Message> messages = [];
     return MatchedUserModel(
