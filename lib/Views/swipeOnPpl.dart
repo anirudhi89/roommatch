@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:roommatch/ViewModels/ListOfUsers.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:roommatch/Widgets/navBar.dart';
 
 // REF: https://pub.dev/packages/flutter_card_swiper
 // Main page where users can swipe on one another -> swipe animation
@@ -57,6 +58,7 @@ class SwipeOnPpl extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: NavBar(),
     );
   }
 }
