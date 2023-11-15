@@ -77,7 +77,7 @@ class _NavigationExampleState extends State<NavigationExample> {
 }
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  const NavBar({super.key, required int tab});
 
   @override
   State<NavBar> createState() => _NavBarState();

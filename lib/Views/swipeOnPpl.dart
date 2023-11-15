@@ -58,7 +58,7 @@ class SwipeOnPpl extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: NavBar(),
+      bottomNavigationBar: NavBar(tab: 1),
     );
   }
 }
