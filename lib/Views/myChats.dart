@@ -47,7 +47,7 @@ class MyChats extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: NavBar(),
+      bottomNavigationBar: NavBar(tab: 2),
     );
   }
 }

@@ -9,15 +9,18 @@ class MyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(title: const Text('My Profile')),
+      appBar: AppBar(
+          title: const Text('My Profile'), automaticallyImplyLeading: false),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 30),
             const Text(
-              'My Profile',
-              style: TextStyle(fontSize: 40),
+              'Images: ',
+              style: TextStyle(fontSize: 20),
             ),
+            const Padding(padding: EdgeInsets.all(50)),
             const SizedBox(height: 30),
             const Text(
               'Name: ',
@@ -30,7 +33,7 @@ class MyProfile extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             const Text(
-              'College: ',
+              'Institution: ',
               style: TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 30),
@@ -38,15 +41,10 @@ class MyProfile extends StatelessWidget {
               'Bio: ',
               style: TextStyle(fontSize: 20),
             ),
-            const SizedBox(height: 30),
-            const Text(
-              'Images: ',
-              style: TextStyle(fontSize: 20),
-            ),
           ],
         ),
       ),
-      bottomNavigationBar: NavBar(),
+      bottomNavigationBar: NavBarExpanded(tab: 0),
     );
   }
 }
