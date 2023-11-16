@@ -83,6 +83,8 @@ class SwipeOnPpl extends StatelessWidget {
                             Text('${user.firstName} ${user.lastName}'),
                             Text('Age: ${user.age}'),
                             Text('College: ${user.collegeName}'),
+                            Center(child: Text('About: ${user.bio}'))
+
                             // ADD MORE LATER
                           ],
                         ),
