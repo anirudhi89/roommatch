@@ -1,71 +1,148 @@
 import 'package:flutter/material.dart';
+import 'package:roommatch/Views/myChats.dart';
+import 'package:roommatch/Views/myProfile.dart';
+import 'package:roommatch/Views/swipeOnPpl.dart';
+import 'package:roommatch/Views/userPreferences.dart';
+import 'package:roommatch/Views/appSettings.dart';
 
-void main() => runApp(const NavigationBarApp());
+/*
+Generic NavBar widget that will fit as the bottomNavigationBar for several of our screens
+Has 3 sections: Profile, Home, and Chats
+Takes in one parameter (tab) so each screen is initialized with the correct option highlighted
+*/
 
-class NavigationBarApp extends StatelessWidget {
-  const NavigationBarApp({super.key});
+class NavBar extends StatefulWidget {
+  final int tab;
+  const NavBar({super.key, required this.tab});
+
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  int currentPageIndex = 1;
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: NavigationExample());
+    return NavigationBar(
+      onDestinationSelected: (int index) {
+        setState(() {
+          currentPageIndex = index;
+          //Profile screen
+          if (currentPageIndex == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyProfile()),
+            );
+          } else if (currentPageIndex == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SwipeOnPpl()),
+            );
+          } else if (currentPageIndex == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyChats()),
+            );
+          }
+        });
+      },
+      indicatorColor: Color.fromARGB(255, 34, 188, 222),
+      selectedIndex: widget.tab,
+      destinations: const <Widget>[
+        NavigationDestination(
+          icon: Icon(Icons.person_sharp),
+          label: 'Profile',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.message_outlined),
+          label: 'Chats',
+        ),
+      ],
+    );
   }
 }
 
-class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key});
+/*
+Slightly altered NavBar for the Profile page, with options to open Preferences as well as Settings
+Has 5 sections: Profile, Preferences, Home, Settings, Chats
+Similarly takes in one parameter
+*/
+class NavBarExpanded extends StatefulWidget {
+  final int tab;
+
+  const NavBarExpanded({Key? key, required this.tab}) : super(key: key);
 
   @override
-  State<NavigationExample> createState() => _NavigationExampleState();
+  State<NavBarExpanded> createState() => _NavBarExpandedState();
 }
 
-class _NavigationExampleState extends State<NavigationExample> {
-  int currentPageIndex = 0;
+class _NavBarExpandedState extends State<NavBarExpanded> {
+  int currentPageIndex = 1;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        indicatorColor: Colors.amber[800],
-        selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.school),
-            icon: Icon(Icons.school_outlined),
-            label: 'School',
-          ),
-        ],
-      ),
-      body: <Widget>[
-        Container(
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: const Text('Page 1'),
+    return NavigationBar(
+      onDestinationSelected: (int index) {
+        setState(() {
+          currentPageIndex = index;
+          //Profile screen
+          if (currentPageIndex == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyProfile()),
+            );
+          } else if (currentPageIndex == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserPreferences()),
+            );
+          } else if (currentPageIndex == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SwipeOnPpl()),
+            );
+          } else if (currentPageIndex == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AppSettings()),
+            );
+          } else if (currentPageIndex == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyChats()),
+            );
+          }
+        });
+      },
+      indicatorColor: Color.fromARGB(255, 34, 188, 222),
+      selectedIndex: widget.tab,
+      destinations: const <Widget>[
+        NavigationDestination(
+          icon: Icon(Icons.person_sharp),
+          label: 'Profile',
         ),
-        Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text('Page 2'),
+        NavigationDestination(
+          icon: Icon(Icons.display_settings_sharp),
+          label: 'Preferences',
         ),
-        Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
+        NavigationDestination(
+          icon: Icon(Icons.home),
+          label: 'Home',
         ),
-      ][currentPageIndex],
+        NavigationDestination(
+          icon: Icon(Icons.settings),
+          label: 'Settings',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.message_outlined),
+          label: 'Chats',
+        ),
+      ],
     );
   }
 }
