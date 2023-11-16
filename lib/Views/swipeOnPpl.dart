@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:roommatch/Models/ListOfUsers.dart';
+import 'package:roommatch/ViewModels/ListOfUsers.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
