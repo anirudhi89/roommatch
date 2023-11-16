@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // TODO: Add a logo
+            Image.asset('images/RoomMatchLogo.png'),
             const Text(
               'Welcome to RoomMatch',
               textAlign: TextAlign.center,

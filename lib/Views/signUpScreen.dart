@@ -47,8 +47,8 @@ class SignUpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // TODO: Add a logo
-            Text(
+            Image.asset('images/RoomMatchLogo.png'),
+            const Text(
               'Sign Up',
               textAlign: TextAlign.center,
               style: TextStyle(

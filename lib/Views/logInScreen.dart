@@ -25,7 +25,7 @@ class logInScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // TODO: Add a logo
+            Image.asset('images/RoomMatchLogo.png'),
             const Text(
               'Log In',
               textAlign: TextAlign.center,
