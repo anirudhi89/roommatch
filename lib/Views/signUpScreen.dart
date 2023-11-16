@@ -7,22 +7,6 @@ import 'ProfileScreen.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key});
-
-  // void handleSignUp(BuildContext context) {
-  //   String email = emailController.text;
-  //   String password = passwordController.text;
-  //   // Create a new user using SetUserViewModel
-  //   MainUserModel newUser = SetUserViewModel().createUser(email, password);
-
-  //   // Now you can use the newUser object as needed, for example, navigate to the next screen.
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => ProfileScreen(user: newUser),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();

@@ -8,11 +8,9 @@ class HandleMatching {
   MainUserModel mainUser = MainUserViewModel().getUser();
 
   void ForceMatch(UnmatchedUserModel user) {
-    // MatchedUserModel updatedUser = user.convertToMatchedUser();
     mainUser.oneWayMatched.add(user);
     print("Force Matched");
     checkIfMatch(user);
-    // print(MainUserViewModel().getUser().mutuallyMatched[0].firstName);
   }
 
   int checkIfMatch(UnmatchedUserModel user) {

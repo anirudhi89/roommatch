@@ -33,7 +33,7 @@ class SwipeOnPpl extends StatelessWidget {
           handleMatching.ForceMatch(generatingUsers[previousIndex]);
           if (handleMatching.checkIfMatch(generatingUsers[previousIndex]) ==
               1) {
-            print("hello");
+            // Animation for Match
           }
         }
         MainUserViewModel()
@@ -41,7 +41,7 @@ class SwipeOnPpl extends StatelessWidget {
             .oneWayMatched
             .add(generatingUsers[previousIndex]);
         if (handleMatching.checkIfMatch(generatingUsers[previousIndex]) == 1) {
-          //Match
+          //Animation for Match
         }
       }
       return true;
@@ -55,7 +55,6 @@ class SwipeOnPpl extends StatelessWidget {
             alignment: Alignment.bottomRight,
             children: [
               CardSwiper(
-                // controller: customController,
                 onSwipe: _onSwipe,
                 cardsCount: generatingUsers.length,
                 cardBuilder:
