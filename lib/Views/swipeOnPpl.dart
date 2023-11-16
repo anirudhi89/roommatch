@@ -16,6 +16,8 @@ class SwipeOnPpl extends StatelessWidget {
     List<Container> userCards = List.generate(generatingUsers.length, (index) {
       UnmatchedUserModel user = generatingUsers[index];
       return Container(
+        height: 700,
+        width: 350,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: Colors.white,
@@ -41,11 +43,15 @@ class SwipeOnPpl extends StatelessWidget {
     });
 
     return Scaffold(
-      body: Center(
-        child: CardSwiper(
-          cardsCount: userCards.length,
-          cardBuilder: (context, index, percentThresholdX, percentThresholdY) =>
-              userCards[index],
+      body: SafeArea(
+        top: true,
+        child: Center(
+          child: CardSwiper(
+            cardsCount: userCards.length,
+            cardBuilder:
+                (context, index, percentThresholdX, percentThresholdY) =>
+                    userCards[index],
+          ),
         ),
       ),
     );
