@@ -56,11 +56,10 @@ class logInScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                print('pressed smtg');
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     // TEMP
-                    builder: (context) => const swipeOnPpl(),
+                    builder: (context) => SwipeOnPpl(),
                   ),
                 );
               },
