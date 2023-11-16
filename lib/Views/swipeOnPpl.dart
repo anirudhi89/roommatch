@@ -44,6 +44,9 @@ class SwipeOnPpl extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
+        // Avoid hitting notch
+        // https://api.flutter.dev/flutter/widgets/SafeArea-class.html
+        // Replace with Padding later?
         top: true,
         child: Center(
           child: CardSwiper(
