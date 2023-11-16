@@ -1,6 +1,8 @@
 //View for the user's profile
 
 import 'package:flutter/material.dart';
+import 'package:roommatch/Models/MainUserModel.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 import 'package:roommatch/Widgets/navBar.dart';
 
 class MyProfile extends StatelessWidget {
@@ -8,6 +10,7 @@ class MyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainUserModel mainUser = MainUserViewModel().getUser();
     return Scaffold(
       appBar: AppBar(
           title: const Text('My Profile'), automaticallyImplyLeading: false),
@@ -22,8 +25,8 @@ class MyProfile extends StatelessWidget {
             ),
             const Padding(padding: EdgeInsets.all(50)),
             const SizedBox(height: 30),
-            const Text(
-              'Name: ',
+            Text(
+              'Name: ${mainUser.firstName} ${mainUser.lastName}',
               style: TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 30),

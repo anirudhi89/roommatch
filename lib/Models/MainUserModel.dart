@@ -13,6 +13,7 @@ class MainUserModel extends BaseUserModel {
   List<UnmatchedUserModel> potentialMatches = [];
   List<MatchedUserModel> mutuallyMatched = [];
   List<UnmatchedUserModel> oneWayMatched = [];
+  List<UnmatchedUserModel> swipedOnMe = [];
 
 
   MainUserModel(
@@ -22,6 +23,7 @@ class MainUserModel extends BaseUserModel {
       this.potentialMatches,
       this.mutuallyMatched,
       this.oneWayMatched,
+      this.swipedOnMe,
       String firstName,
       String lastName,
       int userID,
