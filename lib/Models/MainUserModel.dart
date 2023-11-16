@@ -8,13 +8,15 @@ import 'package:roommatch/Models/BaseUserModel.dart';
 // TODO: SINGLETON
 class MainUserModel extends BaseUserModel {
   bool doneTutorial = false;
-
+  String userName;
   String password;
   List<UnmatchedUserModel> potentialMatches = [];
   List<MatchedUserModel> mutuallyMatched = [];
   List<UnmatchedUserModel> oneWayMatched = [];
 
+
   MainUserModel(
+      this.userName,
       this.password,
       this.doneTutorial,
       this.potentialMatches,
@@ -22,7 +24,6 @@ class MainUserModel extends BaseUserModel {
       this.oneWayMatched,
       String firstName,
       String lastName,
-      String userName,
       int userID,
       String collegeName,
       int age,
