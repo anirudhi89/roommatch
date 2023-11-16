@@ -71,7 +71,6 @@ class logInScreen extends StatelessWidget {
                 MainUserViewModel().setUser(user);
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    // SET USER MODEL HERE
                     builder: (context) => SwipeOnPpl(),
                   ),
                 );
