@@ -10,7 +10,8 @@ class UnmatchedUserModel extends BaseUserModel {
   int userID;
   String collegeName;
   int age;
-  Set<Preferences> preferences;
+  // Set<Preferences> preferences;
+  Map<String, String> preferences;
   List<Image> images;
   String bio;
   double algoScore;
@@ -26,7 +27,7 @@ class UnmatchedUserModel extends BaseUserModel {
     this.algoScore,
   ) : super(firstName, lastName, userID, collegeName, age, preferences, images,
             bio, algoScore);
-            
+
   // Called by Main User's ViewModel - should also update Main User's listOfOneWayMatches
   MatchedUserModel convertToMatchedUser() {
     List<Message> messages = [];

@@ -8,7 +8,8 @@ abstract class BaseUserModel {
       userID; //int: -2^63 to 2^63 - 1. when compiled to JavaScript -2^53 to 2^53 - 1.
   late String collegeName;
   late int age;
-  late Set<Preferences> preferences;
+  // late Set<Preferences> preferences;
+  Map<String, String> preferences;
   late List<Image> images;
   late String bio;
   late double algoScore;
