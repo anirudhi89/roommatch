@@ -1,11 +1,8 @@
 # Roommatch
-
 Tinder meets Roommate Matching
 
 ## Supported devices/operating systems:
-- iphone 13+ (iOS)
-- Mac (Darwin)
-- Chrome (web-javascript)
+- iPhone 13+ (iOS 17.0.1) 
 
 ## Getting Started
 
@@ -17,3 +14,4 @@ Fire up the iOS simulator, initialize a device, and in the root directory, run `
 - Anirudh Iyer
 - Erasto Omolo
 - Calvin Forinash
+
