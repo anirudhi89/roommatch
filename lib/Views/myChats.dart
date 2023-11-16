@@ -2,49 +2,50 @@
 //Will display in recent order, as well as a search bar to search for specific chats
 
 import 'package:flutter/material.dart';
+import 'package:roommatch/Models/MainUserModel.dart';
+import 'package:roommatch/Models/MatchedUserModel.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 import 'package:roommatch/Widgets/navBar.dart';
 
 class MyChats extends StatelessWidget {
-  const MyChats({Key? key}) : super(key: key);
+  MyChats({Key? key}) : super(key: key);
+
+  MainUserModel user = MainUserViewModel().getUser();
 
   @override
   Widget build(BuildContext context) {
+    List<MatchedUserModel> chatList = user.mutuallyMatched;
+    List<String> namesOfPpl = [];
+    for (int i = 0; i < chatList.length; i++) {
+      namesOfPpl.add(chatList[i].firstName);
+    }
+
     return Scaffold(
-      //appBar: AppBar(title: const Text('My Chats')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'My Chats',
-              style: TextStyle(fontSize: 40),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Chat 1',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Chat 2',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Chat 3',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Chat 4',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Chat 5',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'My Chats',
+                style: TextStyle(fontSize: 40),
+              ),
+              const SizedBox(height: 30),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: namesOfPpl.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(
+                        namesOfPpl[index],
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: NavBar(tab: 2),

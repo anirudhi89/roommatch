@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:roommatch/Models/MainUserModel.dart';
 import 'package:roommatch/ViewModels/ListOfUsers.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 import 'package:roommatch/Widgets/navBar.dart';
 import 'package:roommatch/ViewModels/HandleMatching.dart';
 
@@ -14,9 +16,37 @@ class SwipeOnPpl extends StatelessWidget {
   final HandleMatching handleMatching = HandleMatching();
 
   List<UnmatchedUserModel> generatingUsers = ListOfUsers().generateFakeUsers();
-
+  bool ForceMatched = false;
   @override
   Widget build(BuildContext context) {
+    bool _onSwipe(
+      int previousIndex,
+      int? currentIndex,
+      CardSwiperDirection direction,
+    ) {
+      if (direction.name == 'right') {
+        if (ForceMatched) {
+          MainUserViewModel()
+              .getUser()
+              .oneWayMatched
+              .add(generatingUsers[previousIndex]);
+          handleMatching.ForceMatch(generatingUsers[previousIndex]);
+          if (handleMatching.checkIfMatch(generatingUsers[previousIndex]) ==
+              1) {
+            print("hello");
+          }
+        }
+        MainUserViewModel()
+            .getUser()
+            .oneWayMatched
+            .add(generatingUsers[previousIndex]);
+        if (handleMatching.checkIfMatch(generatingUsers[previousIndex]) == 1) {
+          //Match
+        }
+      }
+      return true;
+    }
+
     return Scaffold(
       body: SafeArea(
         top: true,
@@ -25,6 +55,8 @@ class SwipeOnPpl extends StatelessWidget {
             alignment: Alignment.bottomRight,
             children: [
               CardSwiper(
+                // controller: customController,
+                onSwipe: _onSwipe,
                 cardsCount: generatingUsers.length,
                 cardBuilder:
                     (context, index, percentThresholdX, percentThresholdY) {
@@ -61,7 +93,7 @@ class SwipeOnPpl extends StatelessWidget {
                         right: 16.0,
                         child: GestureDetector(
                           onTap: () {
-                            handleMatching.ForceMatch(user);
+                            MainUserViewModel().getUser().swipedOnMe.add(user);
                           },
                           child: Container(
                             padding: EdgeInsets.all(8.0),

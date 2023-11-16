@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Views/swipeOnPpl.dart';
-import 'package:roommatch/ViewModels/SetUserViewModel.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 import 'package:roommatch/Models/MainUserModel.dart';
 
 import 'ProfileScreen.dart';
 
 class SignUpScreen extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
   SignUpScreen({Key? key});
 
   // void handleSignUp(BuildContext context) {
@@ -28,6 +25,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('RoomMatch'),
@@ -80,20 +79,18 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                final TextEditingController emailController =
-                    TextEditingController();
-                final TextEditingController passwordController =
-                    TextEditingController();
-
                 String email = emailController.text;
                 String password = passwordController.text;
-                // Create a new user using SetUserViewModel
-                MainUserModel newUser =
-                    SetUserViewModel().createUser(email, password);
+
+                MainUserModel user =
+                    MainUserViewModel().createUserIfNeeded(email, password);
+
+                MainUserViewModel().setUser(user);
+
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProfileScreen(user: newUser),
+                    builder: (context) => ProfileScreen(user: user),
                   ),
                 );
               },

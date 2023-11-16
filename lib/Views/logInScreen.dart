@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:roommatch/Models/MainUserModel.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 import 'package:roommatch/Views/swipeOnPpl.dart';
 
 class logInScreen extends StatelessWidget {
@@ -6,6 +8,8 @@ class logInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('RoomMatch'),
@@ -35,30 +39,39 @@ class logInScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextField(
-                decoration: InputDecoration(
+                controller: emailController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Email',
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextField(
-                decoration: InputDecoration(
+                controller: passwordController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Password',
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
+                String email = emailController.text;
+                String password = passwordController.text;
+
+                MainUserModel user =
+                    MainUserViewModel().createUserIfNeeded(email, password);
+
+                MainUserViewModel().setUser(user);
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    // TEMP
+                    // SET USER MODEL HERE
                     builder: (context) => SwipeOnPpl(),
                   ),
                 );
