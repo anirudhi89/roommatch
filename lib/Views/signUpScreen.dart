@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Views/swipeOnPpl.dart';
-import 'package:roommatch/Models/ViewModels/SetUserViewModel.dart';
+import 'package:roommatch/ViewModels/SetUserViewModel.dart';
 import 'package:roommatch/Models/MainUserModel.dart';
 
 import 'ProfileScreen.dart';
@@ -11,26 +11,23 @@ class SignUpScreen extends StatelessWidget {
 
   SignUpScreen({Key? key});
 
-  void handleSignUp(BuildContext context) {
-    String email = emailController.text;
-    String password = passwordController.text;
-    // Create a new user using SetUserViewModel
-    MainUserModel newUser = SetUserViewModel().createUser(email, password);
+  // void handleSignUp(BuildContext context) {
+  //   String email = emailController.text;
+  //   String password = passwordController.text;
+  //   // Create a new user using SetUserViewModel
+  //   MainUserModel newUser = SetUserViewModel().createUser(email, password);
 
-    // Now you can use the newUser object as needed, for example, navigate to the next screen.
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ProfileScreen(user: newUser),
-      ),
-    );
-  }
+  //   // Now you can use the newUser object as needed, for example, navigate to the next screen.
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => ProfileScreen(user: newUser),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('RoomMatch'),
@@ -83,7 +80,22 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                handleSignUp(context);
+                final TextEditingController emailController =
+                    TextEditingController();
+                final TextEditingController passwordController =
+                    TextEditingController();
+
+                String email = emailController.text;
+                String password = passwordController.text;
+                // Create a new user using SetUserViewModel
+                MainUserModel newUser =
+                    SetUserViewModel().createUser(email, password);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(user: newUser),
+                  ),
+                );
               },
               child: Text('Sign-up'),
             ),
