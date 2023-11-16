@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:roommatch/Views/swipeOnPpl.dart';
+import 'package:roommatch/ViewModels/SetUserViewModel.dart';
+import 'package:roommatch/Models/MainUserModel.dart';
 
-class signUpScreen extends StatelessWidget {
-  const signUpScreen({super.key});
+import 'ProfileScreen.dart';
+
+class SignUpScreen extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  SignUpScreen({Key? key});
+
+  // void handleSignUp(BuildContext context) {
+  //   String email = emailController.text;
+  //   String password = passwordController.text;
+  //   // Create a new user using SetUserViewModel
+  //   MainUserModel newUser = SetUserViewModel().createUser(email, password);
+
+  //   // Now you can use the newUser object as needed, for example, navigate to the next screen.
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => ProfileScreen(user: newUser),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +48,7 @@ class signUpScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // TODO: Add a logo
-            const Text(
+            Text(
               'Sign Up',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -34,20 +57,47 @@ class signUpScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 48.0),
-            ElevatedButton(
-              onPressed: () {
-                // TODO
-              },
-              child: const Text('Email'),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Email',
+                ),
+              ),
             ),
-            const SizedBox(height: 16.0),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Password',
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                // print("Sign-Up");
-                // TODO: Implement sign-up functionality
+                final TextEditingController emailController =
+                    TextEditingController();
+                final TextEditingController passwordController =
+                    TextEditingController();
+
+                String email = emailController.text;
+                String password = passwordController.text;
+                // Create a new user using SetUserViewModel
+                MainUserModel newUser =
+                    SetUserViewModel().createUser(email, password);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(user: newUser),
+                  ),
+                );
               },
-              child: const Text('Password'),
+              child: Text('Sign-up'),
             ),
           ],
         ),
