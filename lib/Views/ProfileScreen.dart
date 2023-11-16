@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Email: ${user.userName}'), // Assuming userName is the email
+            Text('Email: ${user.userName}'), //email
             Text('Password: ${user.password}'), // Displaying the password for illustration purposes
           ],
         ),
