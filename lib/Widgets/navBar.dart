@@ -12,7 +12,8 @@ Takes in one parameter (tab) so each screen is initialized with the correct opti
 */
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key, required int tab});
+  final int tab;
+  const NavBar({super.key, required this.tab});
 
   @override
   State<NavBar> createState() => _NavBarState();
