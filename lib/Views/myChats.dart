@@ -17,7 +17,8 @@ class MyChats extends StatelessWidget {
     List<MatchedUserModel> chatList = user.mutuallyMatched;
     List<String> namesOfPpl = [];
     for (int i = 0; i < chatList.length; i++) {
-      namesOfPpl.add(chatList[i].firstName);
+      String fullname = chatList[i].firstName + " " + chatList[i].lastName;
+      namesOfPpl.add(fullname);
     }
 
     return Scaffold(

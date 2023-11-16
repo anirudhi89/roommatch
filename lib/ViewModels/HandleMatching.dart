@@ -10,7 +10,7 @@ class HandleMatching {
   void ForceMatch(UnmatchedUserModel user) {
     mainUser.oneWayMatched.add(user);
     print("Force Matched");
-    checkIfMatch(user);
+    // Make sure your driver calls checkIfMatch after, ForceMatch won't (to prevent double matches)
   }
 
   int checkIfMatch(UnmatchedUserModel user) {
@@ -18,7 +18,6 @@ class HandleMatching {
         mainUser.oneWayMatched.contains(user)) {
       mainUser.oneWayMatched.remove(user);
       mainUser.mutuallyMatched.add(user.convertToMatchedUser());
-      print(mainUser.mutuallyMatched.length);
       return 1;
     } else
       return 0;
