@@ -20,7 +20,9 @@ class MainUserViewModel {
       List<String> nameParts = username.split('.');
 
       String firstName = nameParts[0];
+      firstName = firstName[0].toUpperCase() + firstName.substring(1);
       String lastName = nameParts.length > 1 ? nameParts[1] : '';
+      lastName = lastName[0].toUpperCase() + lastName.substring(1);
       user = MainUserModel(
         username,
         password,

@@ -73,7 +73,7 @@ class ListOfUsers {
 
     List<UnmatchedUserModel> users = [];
 
-    for (int i = 1; i <= 20; i++) {
+    for (int i = 1; i <= 30; i++) {
       String firstName = firstNames[random.nextInt(firstNames.length)];
       String lastName = lastNames[random.nextInt(lastNames.length)];
       String college = colleges[random.nextInt(colleges.length)];
