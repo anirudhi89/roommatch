@@ -12,7 +12,7 @@ Fire up the iOS simulator, initialize a device, and in the root directory, run `
 ## Using the app - Deliverable 3
 
 Upon launching the app, you will be prompted to our welcome screen, where you can either "Log In", or "Sign Up".
-![Welcome Screen](demo_screenshots/welcomeScreen.png)
+![Welcome Screen](demo_screenshots/welcomeScreen.png = 250x250)
 
 For today's demo, click login. Enter an email address in the format of firstname.lastname@xxxxx.com and a random password (will not be saved). Then, click "Log In" and you will be taken to the home screen of the app where you swipe on possible matches. 
 ![Login Screen](demo_screenshots/loginScreen.png)
