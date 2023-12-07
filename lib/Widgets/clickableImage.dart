@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 
-class ClickableImage extends StatelessWidget {
-  final int num;
-  //Will keep this constructor to have alternate text for images
+//ClickableImage needs to be a stateful widget
+class ClickableImage extends StatefulWidget {
+  final String img;
+  final int imgnum;
+
   const ClickableImage({
-    required this.num,
+    super.key,
+    required this.img,
+    required this.imgnum,
   });
 
   @override
+  State<ClickableImage> createState() => _ClickableImageState();
+}
+
+class _ClickableImageState extends State<ClickableImage> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
-      child: Padding(
-        padding: EdgeInsets.all(28),
-        //TODO: replace text with profile picture
-        child: Text(
-          'Image $num',
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
+      onTap: () {
+        debugPrint('You clicked image $widget.imgnum.');
+      },
+      child: Image.asset(
+        widget.img,
+        fit: BoxFit.cover,
       ),
     );
   }
