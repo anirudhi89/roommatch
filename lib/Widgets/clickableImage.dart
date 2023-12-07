@@ -20,11 +20,15 @@ class _ClickableImageState extends State<ClickableImage> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        debugPrint('You clicked image $widget.imgnum.');
+        debugPrint('You clicked image ${widget.imgnum + 1}.');
       },
-      child: Image.asset(
-        widget.img,
-        fit: BoxFit.cover,
+      child: SizedBox(
+        height: 125,
+        width: 110,
+        child: Image.asset(
+          widget.img,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
