@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Models/MainUserModel.dart';
 import 'package:roommatch/ViewModels/MainUserViewModel.dart';
+import 'package:roommatch/Widgets/clickableImage.dart';
 import 'package:roommatch/Widgets/navBar.dart';
 
 class MyProfile extends StatelessWidget {
@@ -13,39 +14,40 @@ class MyProfile extends StatelessWidget {
     MainUserModel mainUser = MainUserViewModel().getUser();
     return Scaffold(
       appBar: AppBar(
-          title: const Text('My Profile'), automaticallyImplyLeading: false),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(height: 30),
-            const Text(
-              'Images: ',
-              style: TextStyle(fontSize: 20),
+        title: const Text('My Profile'),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.lightBlue[800],
+      ),
+      body: Column(
+        children: <Widget>[
+          //Single image that expands into grid view (new screen?)
+          Center(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: GestureDetector(
+                onTap: () {
+                  //Take user to image selection screen
+                  debugPrint(
+                      'Clicked image. Taking user to image selection screen...');
+                },
+                child: SizedBox(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(
+                      'images/roommatchdude.jpg',
+                      height: 500,
+                      width: 500,
+                    ),
+                  ),
+                ),
+              ),
             ),
-            const Padding(padding: EdgeInsets.all(50)),
-            const SizedBox(height: 30),
-            Text(
-              'Name: ${mainUser.firstName} ${mainUser.lastName}',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Age: ',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Institution: ',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Bio: ',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 60,
+            child: Text('Age, Name'),
+          )
+        ],
       ),
       bottomNavigationBar: NavBarExpanded(tab: 0),
     );
