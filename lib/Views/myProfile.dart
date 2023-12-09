@@ -20,33 +20,41 @@ class MyProfile extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          //Single image that expands into grid view (new screen?)
-          Center(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: GestureDetector(
-                onTap: () {
-                  //Take user to image selection screen
-                  debugPrint(
-                      'Clicked image. Taking user to image selection screen...');
-                },
-                child: SizedBox(
+          SizedBox(
+            //SizedBox for 3x3 grid of images
+            height: 405,
+            width: 400,
+            child: GridView.count(
+              crossAxisCount: 3,
+              children: List.generate(9, (index) {
+                return Padding(
+                  padding: EdgeInsets.all(10),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      'images/roommatchdude.jpg',
-                      height: 500,
-                      width: 500,
+                    borderRadius: BorderRadius.circular(5),
+                    child: ClickableImage(
+                      img: 'images/roommatchdude.jpg',
+                      imgnum: index,
                     ),
                   ),
-                ),
-              ),
+                );
+              }),
             ),
           ),
           SizedBox(
+            //SizedBox for Age and Name info
+            //Align to the left
+            //Age: dropdown menu?
+            //Name: editable text box
             height: 60,
-            child: Text('Age, Name'),
-          )
+            child: Text('${mainUser.firstName} ${mainUser.lastName}, 21'),
+          ),
+          SizedBox(
+              //SizedBox for institution
+              //Dropdown menu? Text box that suggests options?
+              ),
+          SizedBox(
+              //SizedBox for bio
+              ),
         ],
       ),
       bottomNavigationBar: NavBarExpanded(tab: 0),
