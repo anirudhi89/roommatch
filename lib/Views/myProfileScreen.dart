@@ -29,7 +29,8 @@ class MyProfileScreen extends StatelessWidget {
           crossAxisCount: 3,
           children: List.generate(9, (index) {
             return Center(
-              child: ClickableImage(num: index),
+              child: ClickableImage(
+                  img: 'images/roommatchdude.jpg', imgnum: index),
             );
           }),
         ),

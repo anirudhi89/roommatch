@@ -24,23 +24,23 @@ class MainUserViewModel {
       String lastName = nameParts.length > 1 ? nameParts[1] : '';
       lastName = lastName[0].toUpperCase() + lastName.substring(1);
       user = MainUserModel(
-        username,
-        password,
-        false,
-        [],
-        [],
-        [],
-        [],
-        firstName,
-        lastName,
-        0,
-        "",
-        0,
-        {},
-        [],
-        "",
-        0.0,
-        [],
+        username, //username
+        password, //pwd
+        true, //tutorial complete? [DEFAULT=true]
+        [], //potential matches [DEFAULT=empty]
+        [], //mutual matches [DEFAULT=empty]
+        [], //one way matches [DEFAULT=empty]
+        [], //swiped on me [DEFAULT=empty]
+        firstName, //first name
+        lastName, //last name
+        1, //user ID [DEFAULT=1]
+        "University of Pittsburgh", //college name [DEFAULT=University of Pittsburgh]
+        20, //age [DEFAULT=20]
+        {}, //preferences [DEFAULT=empty]
+        [], //images [DEFAULT=empty, will be arbitrarily filled later]
+        "Hi! I'm ${firstName} and I'm a rising Junior at Pitt studying computer science.", //bio [DEFAULT=generic Pitt bio]
+        0.0, //algo score [DEFAULT=0]
+        [], //messages [DEFAULT=empty]
       );
     }
     print(user?.firstName);
