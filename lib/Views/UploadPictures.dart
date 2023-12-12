@@ -20,7 +20,7 @@ class UploadPictures extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            flex: 2, // Adjust the flex value to control the image's height
+            flex: 2,
             child: Align(
               alignment: Alignment.center,
               child: GridView.builder(
@@ -38,14 +38,13 @@ class UploadPictures extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 16.0), // Add space between the images and the button
+          SizedBox(height: 16.0),
           Expanded(
-            flex: 1, // Adjust the flex value to control the button's height
+            flex: 1,
             child: Align(
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle button click here
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => SwipeOnPpl(),

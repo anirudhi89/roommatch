@@ -65,8 +65,13 @@ class _MessageScreenState extends State<MessageScreen> {
                 String message = textEditingController.text;
 
                 widget.onMessageSent(message);
-
                 textEditingController.clear();
+
+                Future.delayed(Duration(milliseconds: 300), () {
+                  if (mounted) {
+                    setState(() {});
+                  }
+                });
               },
             ),
           ],
