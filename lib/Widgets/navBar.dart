@@ -48,7 +48,7 @@ class _NavBarState extends State<NavBar> {
           }
         });
       },
-      indicatorColor: Color.fromARGB(255, 34, 188, 222),
+      indicatorColor: Colors.lightBlue[800],
       selectedIndex: widget.tab,
       destinations: const <Widget>[
         NavigationDestination(
@@ -120,7 +120,7 @@ class _NavBarExpandedState extends State<NavBarExpanded> {
           }
         });
       },
-      indicatorColor: Color.fromARGB(255, 34, 188, 222),
+      indicatorColor: Colors.lightBlue[800],
       selectedIndex: widget.tab,
       destinations: const <Widget>[
         NavigationDestination(

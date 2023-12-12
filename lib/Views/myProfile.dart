@@ -36,7 +36,7 @@ class MyProfile extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             //SizedBox for 3x3 grid of images
-            height: 390,
+            height: 275,
             width: 400,
             child: GridView.count(
               crossAxisCount: 3,
