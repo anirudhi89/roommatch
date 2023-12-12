@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roommatch/Views/EditUserPreferences.dart';
 import 'package:roommatch/Views/myChats.dart';
 import 'package:roommatch/Views/myProfile.dart';
 import 'package:roommatch/Views/swipeOnPpl.dart';
@@ -99,7 +100,7 @@ class _NavBarExpandedState extends State<NavBarExpanded> {
           } else if (currentPageIndex == 1) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UserPreferences()),
+              MaterialPageRoute(builder: (context) => EditUserPreferences()),
             );
           } else if (currentPageIndex == 2) {
             Navigator.push(
