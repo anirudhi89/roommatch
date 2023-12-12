@@ -1,7 +1,11 @@
 class Message {
-  String message;
-  String sender;
-  String receiver;
-  DateTime time;
-  Message(this.message, this.sender, this.receiver, this.time);
+  String senderName;
+  String content;
+  DateTime timestamp;
+
+  Message({
+    required this.senderName,
+    required this.content,
+    required this.timestamp,
+  });
 }
