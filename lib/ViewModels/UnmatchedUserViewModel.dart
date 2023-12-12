@@ -5,7 +5,7 @@ import 'package:roommatch/Models/Message.dart';
 class UnmatchedUserViewModel {
   // Convert UnmatchedUserModel to MatchedUserModel
   MatchedUserModel convertToMatchedUser(UnmatchedUserModel unmatchedUser) {
-    List<Message> messages = []; // You may need to initialize messages based on your requirements
+    List<Message> messages = [];
     return MatchedUserModel(
       messages,
       unmatchedUser.firstName,
@@ -19,5 +19,4 @@ class UnmatchedUserViewModel {
       unmatchedUser.algoScore,
     );
   }
-  
 }

@@ -3,18 +3,10 @@ import 'package:roommatch/Models/Message.dart';
 import 'package:roommatch/Models/BaseUserModel.dart';
 import 'package:roommatch/Models/Preferences.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 
 class MatchedUserModel extends BaseUserModel {
   late List<Message> messages;
-  // String firstName;
-  // String lastName;
-  // int userID;
-  // String collegeName;
-  // int age;
-  // Set<Preferences> preferences;
-  // List<Image> images;
-  // String bio;
-  // double algoScore;
 
   MatchedUserModel(
     this.messages,
@@ -43,5 +35,17 @@ class MatchedUserModel extends BaseUserModel {
       bio,
       algoScore,
     );
+  }
+
+  Message sendMessageToMatchedUser(String content) {
+    var mainuser = MainUserViewModel().getUser();
+
+    Message newMessage = Message(
+      senderName: mainuser.userName, // mainuser is sender
+      content: content,
+      timestamp: DateTime.now(),
+    );
+    messages.add(newMessage);
+    return newMessage;
   }
 }

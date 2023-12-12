@@ -4,11 +4,11 @@ import 'package:roommatch/Views/swipeOnPpl.dart';
 class UploadPictures extends StatelessWidget {
   final List<String> placeholderImages = [
     'images/roommatchdude.jpg',
-    'images/roommatchgirl.jpg',
     'images/roommatchdude.jpg',
-    'images/roommatchgirl.jpg',
     'images/roommatchdude.jpg',
-    'images/roommatchgirl.jpg',
+    'images/roommatchdude.jpg',
+    'images/roommatchdude.jpg',
+    'images/roommatchdude.jpg',
   ];
 
   @override
@@ -61,7 +61,6 @@ class UploadPictures extends StatelessWidget {
     );
   }
 }
-
 
 class PlaceholderImage extends StatelessWidget {
   final String imagePath;
