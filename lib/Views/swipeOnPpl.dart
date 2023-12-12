@@ -20,6 +20,7 @@ class SwipeOnPpl extends StatelessWidget {
   bool ForceMatched = false;
 
   bool _onSwipe(
+    BuildContext context,
     int previousIndex,
     int? currentIndex,
     CardSwiperDirection direction,
@@ -33,6 +34,7 @@ class SwipeOnPpl extends StatelessWidget {
         handleMatching.ForceMatch(generatingUsers[previousIndex]);
         if (handleMatching.checkIfMatch(generatingUsers[previousIndex]) == 1) {
           // Animation for Match
+          _showMatchPopup(context);
         }
       }
       MainUserViewModel()
@@ -41,9 +43,30 @@ class SwipeOnPpl extends StatelessWidget {
           .add(generatingUsers[previousIndex]);
       if (handleMatching.checkIfMatch(generatingUsers[previousIndex]) == 1) {
         //Animation for Match
+        _showMatchPopup(context);
       }
     }
     return true;
+  }
+
+  void _showMatchPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('It\'s a Match!'),
+          content: Text('Congratulations! You have a match.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   onForceMatch(UnmatchedUserModel user) {
@@ -63,7 +86,9 @@ class SwipeOnPpl extends StatelessWidget {
             children: [
               CardSwiper(
                 controller: controller,
-                onSwipe: _onSwipe,
+                // onSwipe: _onSwipe,
+                onSwipe: (previousIndex, currentIndex, direction) =>
+                    _onSwipe(context, previousIndex, currentIndex, direction),
                 cardsCount: generatingUsers.length,
                 cardBuilder:
                     (context, index, percentThresholdX, percentThresholdY) {
