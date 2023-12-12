@@ -76,7 +76,12 @@ class _MessageScreenState extends State<MessageScreen> {
 =======
 
                 textEditingController.clear();
->>>>>>> 78978ec (add chats/messages)
+
+                Future.delayed(Duration(milliseconds: 300), () {
+                  if (mounted) {
+                    setState(() {});
+                  }
+                });
               },
             ),
           ],
