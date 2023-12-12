@@ -10,76 +10,158 @@ class logInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RoomMatch'),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.blueAccent,
-              Colors.blueGrey,
-            ],
-          ),
+        // AppBar with a back button
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigates back when the back button is pressed
+            Navigator.pop(context);
+          },
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.asset('images/RoomMatchLogo.png'),
-            const Text(
-              'Log In',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Email',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextField(
-                controller: passwordController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Password',
-                ),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                String email = emailController.text;
-                String password = passwordController.text;
+      ),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              // Welcome message!
+              Text(
+                'Welcome Back!',
+                style: TextStyle(
+                  fontSize: 50,
+                  fontFamily: 'Alata',
+                ), // TextStyle
+              ), // Text
 
-                MainUserModel user =
-                    MainUserViewModel().createUserIfNeeded(email, password);
+              // Logo
+              Image.asset(
+                'images/RoomMatchLogo.png',
+                width: 400.0,
+                height: 250.0,
+              ),
+              const SizedBox(height: 5),
 
-                MainUserViewModel().setUser(user);
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => SwipeOnPpl(),
+              // Username textfield with label
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Email',
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 16,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    TextField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ), // OutlineInputBorder
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey.shade400),
+                        ), // FocusedBorder
+                      ), // Input Decoration
+                    ), // TextField
+                  ],
+                ), // Column
+              ), // Padding
+
+              const SizedBox(height: 5),
+              // Password textfield
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Password',
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 16,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    TextField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ), // OutlineInputBorder
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey.shade400),
+                        ), // FocusedBorder
+                      ), // Input Decoration
+                    ), // TextField
+                  ],
+                ), // Column
+              ), // Padding
+              // Forgot password?
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ), // Text
+                  ],
+                ), //Row
+              ), //Padding
+              SizedBox(height: 20),
+              // Sign in button
+              ElevatedButton(
+                onPressed: () {
+                  String email = emailController.text;
+                  String password = passwordController.text;
+
+                  MainUserModel user =
+                      MainUserViewModel().createUserIfNeeded(email, password);
+
+                  MainUserViewModel().setUser(user);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => SwipeOnPpl(),
+                    ),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 34, 188, 222)),
+                  shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
                   ),
-                );
-              },
-              child: const Text('Log In'),
-            ),
-          ],
-        ),
-      ),
-    );
+                  minimumSize: MaterialStateProperty.all<Size>(
+                    Size(double.infinity, 40),
+                  ),
+                ),
+                child: Text(
+                  'Log In',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              // Or continue with
+
+              // Google + Apple sign in button
+
+              // Not a member? Register now
+            ],
+          ), // Column
+        ), // Center
+      ), // Safe Area
+    ); // Scaffold
   }
 }

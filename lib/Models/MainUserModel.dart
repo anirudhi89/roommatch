@@ -15,7 +15,6 @@ class MainUserModel extends BaseUserModel {
   List<UnmatchedUserModel> oneWayMatched = [];
   List<UnmatchedUserModel> swipedOnMe = [];
 
-
   MainUserModel(
       this.userName,
       this.password,
@@ -29,7 +28,6 @@ class MainUserModel extends BaseUserModel {
       int userID,
       String collegeName,
       int age,
-      // Set<Preferences> preferences,
       Map<String, String> preferences,
       List<Image> images,
       String bio,
@@ -40,5 +38,23 @@ class MainUserModel extends BaseUserModel {
 
   String printSmtg() {
     return 'Hello';
+  }
+
+  void setPreferences(List<String> selectedPreferences) {
+    Map<String, String> newPreferences = {};
+
+    // Assuming preferences are stored as key-value pairs
+    for (String preference in selectedPreferences) {
+      newPreferences[preference] =
+          "selected"; // You can modify this based on your needs
+    }
+
+    // Set the preferences in the user model
+    preferences = newPreferences;
+  }
+
+  List<String> getPreferences() {
+    // Assuming preferences are stored as key-value pairs
+    return preferences.keys.toList();
   }
 }
