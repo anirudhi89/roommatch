@@ -1,12 +1,14 @@
-//Simple skeleton view for the user's preferences
-
 import 'package:flutter/material.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 
 class UserPreferences extends StatelessWidget {
   const UserPreferences({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    MainUserViewModel mainUserVM = MainUserViewModel();
+    Map<String, dynamic> preferences = mainUserVM.getUser().preferences;
+
     return Scaffold(
       appBar: AppBar(title: const Text('User Preferences')),
       body: Center(
@@ -18,30 +20,18 @@ class UserPreferences extends StatelessWidget {
               style: TextStyle(fontSize: 40),
             ),
             const SizedBox(height: 30),
-            const Text(
-              'Preference 1',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Preference 2',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Preference 3',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Preference 4',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Preference 5',
-              style: TextStyle(fontSize: 20),
-            ),
+            for (MapEntry<String, dynamic> entry in preferences.entries)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      '${entry.key} : ${entry.value}',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+              ),
           ],
         ),
       ),
