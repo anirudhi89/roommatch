@@ -10,7 +10,7 @@ abstract class BaseUserModel {
   late int age;
   // late Set<Preferences> preferences;
   Map<String, String> preferences;
-  late List<Image> images;
+  late List<String> images;
   late String bio;
   late double algoScore;
 

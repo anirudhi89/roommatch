@@ -15,7 +15,6 @@ class MainUserModel extends BaseUserModel {
   List<UnmatchedUserModel> oneWayMatched = [];
   List<UnmatchedUserModel> swipedOnMe = [];
 
-
   MainUserModel(
       this.userName,
       this.password,
@@ -31,7 +30,7 @@ class MainUserModel extends BaseUserModel {
       int age,
       // Set<Preferences> preferences,
       Map<String, String> preferences,
-      List<Image> images,
+      List<String> images,
       String bio,
       double algoScore,
       List<Message> messages)
