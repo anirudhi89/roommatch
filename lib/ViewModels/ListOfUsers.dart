@@ -92,7 +92,7 @@ class ListOfUsers {
         firstName = girlFirstNames[random.nextInt(girlFirstNames.length)];
       } else {
         firstName = guyFirstNames[random.nextInt(guyFirstNames.length)];
-      } 
+      }
 
       String lastName = lastNames[random.nextInt(lastNames.length)];
       String college = colleges[random.nextInt(colleges.length)];
@@ -100,10 +100,11 @@ class ListOfUsers {
       double algoScore = (random.nextDouble() * 2) - 1; // Between -1 and 1
 
       Map<String, String> preferences = {
-        'smoking': (random.nextBool()) ? 'yes' : 'no',
-        'hotOrCold': (random.nextBool()) ? 'hot' : 'cold',
-        'onCampus': (random.nextBool()) ? 'true' : 'false',
-        'prefGender': (i.isEven) ? 'female' : 'male',
+        'smoking': (random.nextBool()) ? 'Smoking' : 'Non Smoking',
+        'hotOrCold':
+            (random.nextBool()) ? 'Hot Temperature' : 'Cold Temperature',
+        'onCampus': (random.nextBool()) ? 'On Campus' : 'Off Campus',
+        'prefGender': (i.isEven) ? 'Female roommate' : 'Male roommate',
       };
 
       List<String> images = List.filled(

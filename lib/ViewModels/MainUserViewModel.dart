@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:roommatch/Models/MainUserModel.dart';
 
 class MainUserViewModel {
@@ -10,6 +12,7 @@ class MainUserViewModel {
 
   MainUserViewModel._internal();
   MainUserModel? user;
+  Random random = Random();
 
   MainUserModel createUserIfNeeded(String email, String password) {
     if (user == null) {
@@ -36,7 +39,14 @@ class MainUserViewModel {
         1, //user ID [DEFAULT=1]
         "University of Pittsburgh", //college name [DEFAULT=University of Pittsburgh]
         20, //age [DEFAULT=20]
-        {}, //preferences [DEFAULT=empty]
+        {
+          'smoking': (random.nextBool()) ? 'Smoking' : 'Non Smoking',
+          'hotOrCold':
+              (random.nextBool()) ? 'Hot Temperature' : 'Cold Temperature',
+          'onCampus': (random.nextBool()) ? 'On Campus' : 'Off Campus',
+          'prefGender':
+              (random.nextBool()) ? 'Female roommate' : 'Male roommate',
+        }, //preferences [DEFAULT=random]
         [], //images [DEFAULT=empty, will be arbitrarily filled later]
         "Hi! I'm ${firstName} and I'm a rising Junior at Pitt studying computer science.", //bio [DEFAULT=generic Pitt bio]
         0.0, //algo score [DEFAULT=0]

@@ -51,6 +51,7 @@ class SwipeOnPpl extends StatelessWidget {
     return;
   }
 
+  final CardSwiperController controller = CardSwiperController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +62,7 @@ class SwipeOnPpl extends StatelessWidget {
             alignment: Alignment.bottomRight,
             children: [
               CardSwiper(
+                controller: controller,
                 onSwipe: _onSwipe,
                 cardsCount: generatingUsers.length,
                 cardBuilder:
@@ -70,14 +72,12 @@ class SwipeOnPpl extends StatelessWidget {
                     user: user,
                     onLike: () {
                       // Handle like action
-                      _onSwipe(index, null, CardSwiperDirection.right);
+                      controller.swipeRight();
                     },
                     onDislike: () {
+                      controller.swipeLeft();
                       // Handle dislike action
                     },
-                    // onForceMatch: {
-                    //
-                    // },
                     onForceMatch: () {
                       onForceMatch(user);
                     },

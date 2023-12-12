@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Models/UnmatchedUserModel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 
 class MatchCard extends StatefulWidget {
   final UnmatchedUserModel user;
@@ -21,6 +22,24 @@ class MatchCard extends StatefulWidget {
 
 class _MatchCardState extends State<MatchCard> {
   int _currentImageIndex = 0;
+
+  Widget _buildPreferenceOval(String preference) {
+    final mainUserPreferences = MainUserViewModel().getUser().preferences;
+    final isMatch = mainUserPreferences.containsValue(preference);
+
+    return Container(
+      margin: EdgeInsets.only(bottom: 8.0),
+      decoration: BoxDecoration(
+        color: isMatch ? Colors.green : Colors.grey,
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      child: Text(
+        preference,
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,36 +109,49 @@ class _MatchCardState extends State<MatchCard> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${widget.user.firstName} ${widget.user.lastName}',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text('Age: ${widget.user.age}'),
-                    Text('College: ${widget.user.collegeName}'),
-                    Text('About: ${widget.user.bio}'),
-                  ],
+              SizedBox(
+                // height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${widget.user.firstName} ${widget.user.lastName}',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Text('Age: ${widget.user.age}'),
+                      Text('College: ${widget.user.collegeName}'),
+                      Text('About: ${widget.user.bio}'),
+                      Wrap(
+                        children: [
+                          for (String preference
+                              in widget.user.getPreferences())
+                            _buildPreferenceOval(preference),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: widget.onDislike,
-                    child: Icon(Icons.thumb_down, size: 30, color: Colors.red),
-                  ),
-                  GestureDetector(
-                    onTap: widget.onLike,
-                    child: Icon(Icons.thumb_up, size: 30, color: Colors.green),
-                  ),
-                ],
-              ),
             ],
+          ),
+          Align(
+            alignment: Alignment(0.0, 0.89),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: widget.onDislike,
+                  child: Icon(Icons.thumb_down, size: 30, color: Colors.red),
+                ),
+                GestureDetector(
+                  onTap: widget.onLike,
+                  child: Icon(Icons.thumb_up, size: 30, color: Colors.green),
+                ),
+              ],
+            ),
           ),
           Positioned(
             bottom: 16.0,

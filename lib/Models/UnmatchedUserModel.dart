@@ -49,4 +49,12 @@ class UnmatchedUserModel extends BaseUserModel {
     // URL of images
     return images;
   }
+
+  List<String> getPreferences () {
+    List<String> formattedPreferences = [];
+    preferences.forEach((key, value) {
+      formattedPreferences.add('$value');
+    });
+    return formattedPreferences;
+  }
 }
