@@ -1,12 +1,18 @@
 //View for the user's profile
 
+//Flutter imports
 import 'package:flutter/material.dart';
+
+//Models and ViewModels
 import 'package:roommatch/Models/MainUserModel.dart';
 import 'package:roommatch/ViewModels/MainUserViewModel.dart';
+
+//Widgets
 import 'package:roommatch/Widgets/clickableImage.dart';
 import 'package:roommatch/Widgets/navBar.dart';
 import 'package:roommatch/Widgets/ageDropdown.dart';
 import 'package:roommatch/Widgets/nameChange.dart';
+import 'package:roommatch/Widgets/collegeDropdown.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -28,7 +34,7 @@ class MyProfile extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             //SizedBox for 3x3 grid of images
-            height: 400,
+            height: 390,
             width: 400,
             child: GridView.count(
               crossAxisCount: 3,
@@ -46,36 +52,65 @@ class MyProfile extends StatelessWidget {
               }),
             ),
           ),
-          SizedBox(
-            //SizedBox for Age and Name info
-            //Align to the left
-            //Age: dropdown menu?
-            //Name: editable text box
-            height: 50,
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
+          Row(
+            //Row for name change and age change
+            children: <Widget>[
+              SizedBox(width: 15),
+              SizedBox(
+                //SizedBox for name change
+                height: 50,
+                width: 225,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue[800],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: NameChange(),
+                  ),
                 ),
-                child: Row(
-                  children: <Widget>[
-                    NameChange(),
-                    SizedBox(width: 15),
-                    SizedBox(
-                      height: 50,
-                      width: 60,
-                      child: AgeDropdown(currentAge: mainUser.age),
+              ),
+              SizedBox(width: 15),
+              SizedBox(
+                //SizedBox for age change
+                height: 50,
+                width: 125,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue[800],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: AgeDropdown(
+                        currentAge: mainUser.age,
+                      ),
                     ),
-                  ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 5), //Padding
+          SizedBox(
+            height: 50,
+            width: 275,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.lightBlue[800],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: CollegeDropdown(
+                  currCollege: mainUser.collegeName,
                 ),
               ),
             ),
           ),
-          SizedBox(
-              //SizedBox for institution
-              //Dropdown menu? Text box that suggests options?
-              ),
           SizedBox(
               //SizedBox for bio
               ),
