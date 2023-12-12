@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:roommatch/Models/MainUserModel.dart';
 import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 import 'package:roommatch/Views/swipeOnPpl.dart';
+import 'PreferencesScreen.dart';
 import 'ProfileScreen.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -114,7 +115,7 @@ class SignUpScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      'Forgot Password?',
+                      'Not Registered?',
                       style: TextStyle(color: Colors.grey[600]),
                     ),// Text
                   ],
@@ -131,7 +132,7 @@ class SignUpScreen extends StatelessWidget {
                 
                 Navigator.pushReplacement(context,
                   MaterialPageRoute(
-                    builder: (context) => ProfileScreen(user: user),
+                    builder: (context) => PreferencesScreen(),
                   ),
                 );
               },
@@ -147,7 +148,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               ),
               child: Text(
-                'Log In',
+                'Sign Up',
                 style: TextStyle(
                   color: Colors.black,
                 ),
