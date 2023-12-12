@@ -29,7 +29,7 @@ class MainUserModel extends BaseUserModel {
       String collegeName,
       int age,
       Map<String, String> preferences,
-      List<Image> images,
+      List<String> images,
       String bio,
       double algoScore,
       List<Message> messages)

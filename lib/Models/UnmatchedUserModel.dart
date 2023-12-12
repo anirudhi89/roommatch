@@ -12,7 +12,7 @@ class UnmatchedUserModel extends BaseUserModel {
   int age;
   // Set<Preferences> preferences;
   Map<String, String> preferences;
-  List<Image> images;
+  List<String> images;
   String bio;
   double algoScore;
   UnmatchedUserModel(
@@ -43,5 +43,18 @@ class UnmatchedUserModel extends BaseUserModel {
       bio,
       algoScore,
     );
+  }
+
+  List<String> getImages() {
+    // URL of images
+    return images;
+  }
+
+  List<String> getPreferences () {
+    List<String> formattedPreferences = [];
+    preferences.forEach((key, value) {
+      formattedPreferences.add('$value');
+    });
+    return formattedPreferences;
   }
 }

@@ -8,27 +8,40 @@ class ListOfUsers {
   }
 
   List<UnmatchedUserModel> generateFakeUsers() {
-    List<String> firstNames = [
+    List<String> guyFirstNames = [
       'John',
-      'Jane',
       'Bob',
-      'Alice',
       'Charlie',
-      'Emma',
       'David',
-      'Eva',
       'Frank',
-      'Grace',
       'Harry',
-      'Helen',
       'Ivan',
-      'Isabel',
       'Jack',
-      'Julia',
       'Kevin',
-      'Karen',
       'Leo',
+      'Mike',
+      'Nick',
+      'Oscar',
+      'Paul',
+      'Robert'
+    ];
+
+    List<String> girlFirstNames = [
+      'Jane',
+      'Alice',
+      'Emma',
+      'Eva',
+      'Grace',
+      'Helen',
+      'Isabel',
+      'Julia',
+      'Karen',
       'Lily',
+      'Alex',
+      'Mia',
+      'Nina',
+      'Olivia',
+      'Pamela'
     ];
 
     List<String> lastNames = [
@@ -74,18 +87,30 @@ class ListOfUsers {
     List<UnmatchedUserModel> users = [];
 
     for (int i = 1; i <= 30; i++) {
-      String firstName = firstNames[random.nextInt(firstNames.length)];
+      String firstName;
+      if (i.isEven) {
+        firstName = girlFirstNames[random.nextInt(girlFirstNames.length)];
+      } else {
+        firstName = guyFirstNames[random.nextInt(guyFirstNames.length)];
+      }
+
       String lastName = lastNames[random.nextInt(lastNames.length)];
       String college = colleges[random.nextInt(colleges.length)];
       int age = 18 + random.nextInt(7); // Between 18 and 24
       double algoScore = (random.nextDouble() * 2) - 1; // Between -1 and 1
 
       Map<String, String> preferences = {
-        'smoking': (random.nextBool()) ? 'yes' : 'no',
-        'hotOrCold': (random.nextBool()) ? 'hot' : 'cold',
-        'onCampus': (random.nextBool()) ? 'true' : 'false',
-        'prefGender': (random.nextBool()) ? 'male' : 'female',
+        'smoking': (random.nextBool()) ? 'Smoking' : 'Non Smoking',
+        'hotOrCold':
+            (random.nextBool()) ? 'Hot Temperature' : 'Cold Temperature',
+        'onCampus': (random.nextBool()) ? 'On Campus' : 'Off Campus',
+        'prefGender': (i.isEven) ? 'Female roommate' : 'Male roommate',
       };
+
+      List<String> images = List.filled(
+        6,
+        (i.isEven) ? 'images/roommatchgirl.jpeg' : 'images/roommatchdude.jpg',
+      );
 
       String bio = bioTemplates[random.nextInt(bioTemplates.length)];
       bio = bio
@@ -104,7 +129,7 @@ class ListOfUsers {
         college,
         age,
         preferences,
-        [],
+        images,
         bio,
         algoScore,
       ));
