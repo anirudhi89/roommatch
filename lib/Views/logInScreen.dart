@@ -153,15 +153,10 @@ class logInScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // Or continue with
-
-              // Google + Apple sign in button
-
-              // Not a member? Register now
             ],
-          ), // Column
-        ), // Center
-      ), // Safe Area
-    ); // Scaffold
+          ), 
+        ),
+      ),
+    );
   }
 }

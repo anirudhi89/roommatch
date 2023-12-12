@@ -40,12 +40,16 @@ class MainUserViewModel {
         "University of Pittsburgh", //college name [DEFAULT=University of Pittsburgh]
         20, //age [DEFAULT=20]
         {
+          'earlyRiser': (random.nextBool()) ? 'Early Riser' : 'Night Owl',
           'smoking': (random.nextBool()) ? 'Smoking' : 'Non Smoking',
-          'hotOrCold':
-              (random.nextBool()) ? 'Hot Temperature' : 'Cold Temperature',
+          'drinking': (random.nextBool()) ? 'Drinking' : 'Non Drinking',
           'onCampus': (random.nextBool()) ? 'On Campus' : 'Off Campus',
           'prefGender':
-              (random.nextBool()) ? 'Female roommate' : 'Male roommate',
+              (random.nextBool()) ? 'Female Roommate' : 'Male Roommate',
+          'hotOrCold':
+              (random.nextBool()) ? 'Hot Temperature' : 'Cold Temperature',
+          'frequentGuests':
+              (random.nextBool()) ? 'Frequent Guests' : 'No Guests',
         }, //preferences [DEFAULT=random]
         [], //images [DEFAULT=empty, will be arbitrarily filled later]
         "Hi! I'm ${firstName} and I'm a rising Junior at Pitt studying computer science.", //bio [DEFAULT=generic Pitt bio]

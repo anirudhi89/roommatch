@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roommatch/Models/MainUserModel.dart';
 import 'package:roommatch/ViewModels/MainUserViewModel.dart';
+import 'package:roommatch/Views/UploadPictures.dart';
 
 class PreferencesScreen extends StatefulWidget {
   @override
@@ -28,37 +29,38 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Choose your preferences:',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                buildPreferenceButton('Early Riser'),
-                buildPreferenceButton('Night Owl'),
-                buildPreferenceButton('Smoking'),
-                buildPreferenceButton('Drinking'),
-                buildPreferenceButton('Going Out'),
-                buildPreferenceButton('Cleanly'),
-                buildPreferenceButton('Prefers Quiet'),
-                buildPreferenceButton('Loud'),
-                buildPreferenceButton('Frequent Guests'),
-                buildPreferenceButton('Works at Home'),
-                buildPreferenceButton('Goes to Gym'),
-                buildPreferenceButton('Gamer'),
-                buildPreferenceButton('Study'),
-              ],
+            Text(
+              'Choose your preferences:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [],
+            const SizedBox(height: 16),
+            Expanded(
+              child: Wrap(
+                spacing: 8.0, // Adjust the spacing as needed
+                runSpacing: 8.0, // Adjust the run spacing as needed
+                children: [
+                  buildPreferenceButton('Early Riser'),
+                  buildPreferenceButton('Night Owl'),
+                  buildPreferenceButton('Non Smoking'),
+                  buildPreferenceButton('Smoking'),
+                  buildPreferenceButton('Drinking'),
+                  buildPreferenceButton('Non Drinking'),
+                  buildPreferenceButton('On Campus'),
+                  buildPreferenceButton('Off Campus'),
+                  buildPreferenceButton('Male Roommate'),
+                  buildPreferenceButton('Female Roommate'),
+                  buildPreferenceButton('Cold Temperature'),
+                  buildPreferenceButton('Hot Temperature'),
+                  buildPreferenceButton('Frequent Guests'),
+                  buildPreferenceButton('No Guests'),
+                ],
+              ),
             ),
           ],
         ),
@@ -67,11 +69,16 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
         child: ElevatedButton(
           onPressed: () {
             // Save selected preferences to the user model
-            MainUserViewModel().user?.setPreferences(selectedPreferences);
-            List<String> savedPreferences =
-                MainUserViewModel().user?.getPreferences() ?? [];
+            final mainuser = MainUserViewModel().getUser();
+            mainuser.setPreferences(selectedPreferences);
+            List<String> savedPreferences = mainuser.getPreferences() ?? [];
             print("Saved Preferences: $savedPreferences");
-            // TODO: Perform any other actions or navigate to the next screen
+            // Navigate to upload pics page
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => UploadPictures(),
+              ),
+            );
           },
           child: Text('Save Preferences'),
         ),
@@ -80,16 +87,18 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
   }
 
   Widget buildPreferenceButton(String preference) {
-    return ElevatedButton(
-      onPressed: () {
-        togglePreference(preference);
-      },
-      style: ButtonStyle(
-        backgroundColor: selectedPreferences.contains(preference)
-            ? MaterialStateProperty.all<Color>(Colors.blue)
-            : null,
+    return Container(
+      child: ElevatedButton(
+        onPressed: () {
+          togglePreference(preference);
+        },
+        style: ButtonStyle(
+          backgroundColor: selectedPreferences.contains(preference)
+              ? MaterialStateProperty.all<Color>(Colors.blue)
+              : null,
+        ),
+        child: Text(preference),
       ),
-      child: Text(preference),
     );
   }
 }
