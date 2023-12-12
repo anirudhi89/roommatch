@@ -40,7 +40,7 @@ class MyProfile extends StatelessWidget {
             width: 400,
             child: GridView.count(
               crossAxisCount: 3,
-              children: List.generate(9, (index) {
+              children: List.generate(6, (index) {
                 return Padding(
                   padding: EdgeInsets.all(10),
                   child: ClipRRect(
