@@ -13,6 +13,7 @@ import 'package:roommatch/Widgets/navBar.dart';
 import 'package:roommatch/Widgets/ageDropdown.dart';
 import 'package:roommatch/Widgets/nameChange.dart';
 import 'package:roommatch/Widgets/collegeDropdown.dart';
+import 'package:roommatch/Widgets/editBio.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class MyProfile extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.lightBlue[800],
       ),
+      backgroundColor: Colors.blueGrey[400],
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -38,7 +40,7 @@ class MyProfile extends StatelessWidget {
             width: 400,
             child: GridView.count(
               crossAxisCount: 3,
-              children: List.generate(9, (index) {
+              children: List.generate(6, (index) {
                 return Padding(
                   padding: EdgeInsets.all(10),
                   child: ClipRRect(
@@ -111,11 +113,24 @@ class MyProfile extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 5), //Padding
           SizedBox(
-              //SizedBox for bio
+            //SizedBox for bio
+            height: 110,
+            width: 350,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.lightBlue[800],
+                borderRadius: BorderRadius.circular(12),
               ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: EditBio(bio: mainUser.bio),
+              ),
+            ),
+          ),
           SizedBox(
-              //Final box for a "Save changes" button
+              //Final box for a "Save changes" button?
               //Pressing the button will save:
               //1. First and last name changes (from texteditingcontroller.text)
               //2. Institution name change
