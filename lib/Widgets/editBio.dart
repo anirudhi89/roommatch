@@ -1,6 +1,7 @@
 //Bio editing box
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:roommatch/Models/MainUserModel.dart';
 import 'package:roommatch/ViewModels/MainUserViewModel.dart';
 
@@ -31,6 +32,11 @@ class _EditBioState extends State<EditBio> {
           height: 100,
           width: 350,
           child: EditableText(
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(250),
+            ],
+            enableInteractiveSelection: true,
+            selectionControls: MaterialTextSelectionControls(),
             textAlign: TextAlign.center,
             backgroundCursorColor: Colors.black,
             controller: bio_controller,
@@ -45,7 +51,7 @@ class _EditBioState extends State<EditBio> {
               mainuser.bio = newbio!;
               debugPrint('Bio changed to $newbio');
             },
-            maxLines: 5,
+            maxLines: 6,
           ),
         ),
       ],
