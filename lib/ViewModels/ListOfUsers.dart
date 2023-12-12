@@ -100,16 +100,19 @@ class ListOfUsers {
       double algoScore = (random.nextDouble() * 2) - 1; // Between -1 and 1
 
       Map<String, String> preferences = {
+        'earlyRiser': (random.nextBool()) ? 'Early Riser' : 'Night Owl',
         'smoking': (random.nextBool()) ? 'Smoking' : 'Non Smoking',
+        'drinking': (random.nextBool()) ? 'Drinking' : 'Non Drinking',
+        'onCampus': (random.nextBool()) ? 'On Campus' : 'Off Campus',
+        'prefGender': (random.nextBool()) ? 'Female Roommate' : 'Male Roommate',
         'hotOrCold':
             (random.nextBool()) ? 'Hot Temperature' : 'Cold Temperature',
-        'onCampus': (random.nextBool()) ? 'On Campus' : 'Off Campus',
-        'prefGender': (i.isEven) ? 'Female roommate' : 'Male roommate',
+        'frequentGuests': (random.nextBool()) ? 'Frequent Guests' : 'No Guests',
       };
 
       List<String> images = List.filled(
         6,
-        (i.isEven) ? 'images/roommatchgirl.jpeg' : 'images/roommatchdude.jpg',
+        (i.isEven) ? 'images/roommatchgirl.jpg' : 'images/roommatchdude.jpg',
       );
 
       String bio = bioTemplates[random.nextInt(bioTemplates.length)];

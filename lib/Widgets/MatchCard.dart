@@ -138,7 +138,7 @@ class _MatchCardState extends State<MatchCard> {
             ],
           ),
           Align(
-            alignment: Alignment(0.0, 0.89),
+            alignment: Alignment(0.0, 0.95),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

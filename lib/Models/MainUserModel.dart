@@ -40,21 +40,31 @@ class MainUserModel extends BaseUserModel {
     return 'Hello';
   }
 
-  void setPreferences(List<String> selectedPreferences) {
-    Map<String, String> newPreferences = {};
+  Map<String, String> setPreferences(List<String> newPreferences) {
+    Map<String, String> updatedPreferences = Map.from(preferences);
 
-    // Assuming preferences are stored as key-value pairs
-    for (String preference in selectedPreferences) {
-      newPreferences[preference] =
-          "selected"; // You can modify this based on your needs
-    }
+    updatedPreferences['smoking'] =
+        newPreferences.contains('Non Smoking') ? 'Non Smoking' : 'Smoking';
+    updatedPreferences['hotOrCold'] = newPreferences.contains('Hot Temperature')
+        ? 'Hot Temperature'
+        : 'Cold Temperature';
+    updatedPreferences['onCampus'] =
+        newPreferences.contains('On Campus') ? 'On Campus' : 'Off Campus';
+    updatedPreferences['prefGender'] =
+        newPreferences.contains('Female Roommate')
+            ? 'Female Roommate'
+            : 'Male Roommate';
+    updatedPreferences['earlyRiser'] =
+        newPreferences.contains('Early Riser') ? 'Early Riser' : 'Night Owl';
+    updatedPreferences['drinking'] =
+        newPreferences.contains('Non Drinking') ? 'Non Drinking' : 'Drinking';
 
-    // Set the preferences in the user model
-    preferences = newPreferences;
+    preferences = updatedPreferences;
+    return updatedPreferences;
   }
 
   List<String> getPreferences() {
     // Assuming preferences are stored as key-value pairs
-    return preferences.keys.toList();
+    return preferences.values.toList();
   }
 }
