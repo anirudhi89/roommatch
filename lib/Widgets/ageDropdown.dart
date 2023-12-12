@@ -23,17 +23,25 @@ class _AgeDropdownState extends State<AgeDropdown> {
     int currVal = ageRange[widget.currentAge - 1];
     return DropdownButton(
       value: currVal,
-      icon: const Icon(Icons.arrow_circle_down_rounded),
+      icon: const Icon(Icons.arrow_circle_down_rounded, color: Colors.white),
       onChanged: (int? value) {
         setState(() {
           widget.currentAge = value!;
         });
         mainuser.age = value!;
+        debugPrint('[uid=${mainuser.userID}] Age changed to ${mainuser.age}');
       },
       items: ageRange.map<DropdownMenuItem<int>>((int value) {
         return DropdownMenuItem<int>(
           value: value,
-          child: Text(value.toString()),
+          child: Text(
+            value.toString(),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontFamily: 'Roboto',
+            ),
+          ),
         );
       }).toList(),
     );
