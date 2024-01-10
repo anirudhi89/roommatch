@@ -60,6 +60,9 @@ Bugs:
 - Swiping back from home screen: once you are logged in and have been taken to the home swiping screen, you can still swipe backwards to return to the login screen. This is a native iPhone feature, but we are working on a fix using either PopScope or by clearing the stack before changing screens.
 - Swiping back from all screens: since swiping back to return is a native iPhone feature, this bug features on all screens. This will also be fixed in the future; in the meantime, navigate the app using only the NavBar to avoid errors or extraneous bugs occurring. 
 
+Model Diagram of Software Architecture:
+
+https://www.canva.com/design/DAFy-RkUxJw/JKV1taWAIgEJ4tMhqSwLKQ/edit?utm_content=DAFy-RkUxJw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ## Contributors:
 - [Anirudh Iyer](github.com/anirudhi89)
